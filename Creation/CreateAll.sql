@@ -1,6 +1,7 @@
 CREATE TABLE Customer(
     CustomerID  INT NOT NULL,
     FullAddress VARCHAR(50) NOT NULL,
+    Email VARCHAR(50) NOT NULL
     PhoneNumber INT NOT NULL,
     UserName VARCHAR(20) NOT NULL,
     UserPass VARCHAR(20) NOT NULL,
