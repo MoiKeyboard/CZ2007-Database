@@ -1,7 +1,11 @@
+USE dsaig6;
+GO
+
 CREATE TABLE Customer(
-    CustomerID  INT NOT NULL,
+    CustomerID  INT NOT NULL IDENTITY(1,1),
+    FullName VARCHAR(50) NOT NULL,
     FullAddress VARCHAR(50) NOT NULL,
-    Email VARCHAR(50) NOT NULL
+    Email VARCHAR(50) NOT NULL,
     PhoneNumber INT NOT NULL,
     UserName VARCHAR(20) NOT NULL,
     UserPass VARCHAR(20) NOT NULL,
@@ -10,8 +14,8 @@ CREATE TABLE Customer(
 );
 
 CREATE TABLE CreditCard (
-	CreditCardID INT NOT NULL,
-	Expiry    DATE	NOT NULL,
+	CreditCardID INT NOT NULL IDENTITY(1,1),
+	Expiry DATE	NOT NULL,
     CustomerID INT NOT NULL,
     
     PRIMARY KEY (CreditCardID),
@@ -19,7 +23,7 @@ CREATE TABLE CreditCard (
 );
 
 CREATE TABLE ProductType(
-    ProductTypeID INT NOT NULL,
+    ProductTypeID INT NOT NULL IDENTITY(1,1),
     ProductTypeDesc VARCHAR(500),
     ParentID INT,
     
@@ -28,7 +32,7 @@ CREATE TABLE ProductType(
 );
 
 CREATE TABLE Product (
-    ProductID INT NOT NULL,
+    ProductID INT NOT NULL IDENTITY(1,1),
     ProductTypeID INT NOT NULL,
     ProductName VARCHAR(20) NOT NULL,
     Price DECIMAL(8,2) NOT NULL,
@@ -40,22 +44,32 @@ CREATE TABLE Product (
     FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID)
 );
 
+CREATE TABLE Photo (
+    PhotoID INT NOT NULL IDENTITY(1,1),
+    ProductID INT NOT NULL,
+    Photo VARCHAR(20),
+
+    PRIMARY KEY (PhotoID),
+    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+);
+
 CREATE TABLE Shop (
-    ShopID INT NOT NULL,
+    ShopID INT NOT NULL IDENTITY(1,1),
     ShopName VARCHAR(20) NOT NULL,
 
     PRIMARY KEY (ShopID)
 );
 
 CREATE TABLE RestrictedShop (
-    ShopID INT NOT NULL,
+    ShopID INT NOT NULL IDENTITY(1,1),
     ProductTypeID INT NOT NULL,
 
     PRIMARY KEY (ShopID, ProductTypeID)
 );
 
 CREATE TABLE Invoice (
-    InvoiceID INT NOT NULL,
+    InvoiceID INT NOT NULL IDENTITY(1,1),
     InvoiceDate DATE NOT NULL,
     InvoiceStatus VARCHAR(20) NOT NULL,
     
@@ -63,7 +77,7 @@ CREATE TABLE Invoice (
 );
 
 CREATE TABLE Payment (
-    PaymentID INT NOT NULL,
+    PaymentID INT NOT NULL IDENTITY(1,1),
     PaymentDate DATE NOT NULL,
     Amount DECIMAL(8,2) NOT NULL,
 
@@ -71,7 +85,7 @@ CREATE TABLE Payment (
 );
 
 CREATE TABLE Orders (
-    OrderID INT NOT NULL,
+    OrderID INT NOT NULL IDENTITY(1,1),
     OrderDate DATE NOT NULL,
     OrderStatus VARCHAR(20) NOT NULL,
     CreditCardID INT NOT NULL,
@@ -83,7 +97,7 @@ CREATE TABLE Orders (
 );
 
 CREATE TABLE Shipment (
-    ShipmentID INT NOT NULL,
+    ShipmentID INT NOT NULL IDENTITY(1,1),
     TrackingNo INT,
     ShipmentDate DATE,
 
@@ -100,6 +114,8 @@ CREATE TABLE OrderItem (
     ItemStatus VARCHAR(20) NOT NULL,
 
     PRIMARY KEY (OrderID, SequenceID),
-    FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+    FOREIGN KEY (ProductID) REFERENCES Product(ProductID) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (ShipmentID) REFERENCES Shipment(ShipmentID)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
