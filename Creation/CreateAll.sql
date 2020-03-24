@@ -53,11 +53,13 @@ CREATE TABLE Product (
 
 CREATE TABLE Photo (
     PhotoID INT NOT NULL IDENTITY(1,1),
-    ProductID INT NOT NULL,
-    Photo VARCHAR(20),
+    Photo VARCHAR(20) NOT NULL,
+    ProductID INT NOT NULL
+    
 
-	UNIQUE (PhotoID),
-    PRIMARY KEY (PhotoID),
+  UNIQUE (PhotoID),
+    PRIMARY KEY (PhotoID, Photo),
+
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
     ON DELETE CASCADE ON UPDATE CASCADE,
 );
@@ -74,8 +76,10 @@ CREATE TABLE RestrictedShop (
     ShopID INT NOT NULL,
     ProductTypeID INT NOT NULL,
 
-    FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID),
-	FOREIGN KEY (ShopID) REFERENCES Shop(ShopID),
+    PRIMARY KEY (ShopID, ProductTypeID)
+    FOREIGN KEY (ShopID) REFERENCES Shop(ShopID),
+    FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID)
+
 );
 
 CREATE TABLE Invoice (
