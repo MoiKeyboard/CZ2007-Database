@@ -5,7 +5,11 @@ The repository contains scripts related to the final lab for CZ2007 through [MSS
 NTUwireless VPN Access
 
 ## Optional (VScode)
-Under settings.json
+For quick access to database through VSCode
+1. Downlaod the following
+- [Visual Studio Code](https://code.visualstudio.com/Download)
+- [SQL Server (mssql) extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)
+2. Add following snippet to VSCode **settings.json** for quick connection [for more](https://docs.microsoft.com/en-us/sql/visual-studio-code/sql-server-develop-use-vscode?view=sql-server-ver15)
 ```
 "mssql.connections": [
         {
@@ -20,4 +24,3 @@ Under settings.json
         }
     ]
 ```
-[for more infomation on connecting through VSCode](https://docs.microsoft.com/en-us/sql/visual-studio-code/sql-server-develop-use-vscode?view=sql-server-ver15)
