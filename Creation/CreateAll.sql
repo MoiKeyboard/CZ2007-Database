@@ -14,8 +14,8 @@ CREATE TABLE Customer(
 );
 
 CREATE TABLE CreditCard (
-	CreditCardID INT NOT NULL IDENTITY(1,1),
-	Expiry DATE	NOT NULL,
+    CreditCardID INT NOT NULL IDENTITY(1,1),
+    Expiry DATE	NOT NULL,
     CustomerID INT NOT NULL,
     
     PRIMARY KEY (CreditCardID),
@@ -46,10 +46,11 @@ CREATE TABLE Product (
 
 CREATE TABLE Photo (
     PhotoID INT NOT NULL IDENTITY(1,1),
-    ProductID INT NOT NULL,
-    Photo VARCHAR(20),
+    Photo VARCHAR(20) NOT NULL,
+    ProductID INT NOT NULL
+    
 
-    PRIMARY KEY (PhotoID),
+    PRIMARY KEY (PhotoID, Photo),
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
     ON DELETE CASCADE ON UPDATE CASCADE,
 );
@@ -62,10 +63,12 @@ CREATE TABLE Shop (
 );
 
 CREATE TABLE RestrictedShop (
-    ShopID INT NOT NULL IDENTITY(1,1),
+    ShopID INT NOT NULL,
     ProductTypeID INT NOT NULL,
 
     PRIMARY KEY (ShopID, ProductTypeID)
+    FOREIGN KEY (ShopID) REFERENCES Shop(ShopID),
+    FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID)
 );
 
 CREATE TABLE Invoice (
