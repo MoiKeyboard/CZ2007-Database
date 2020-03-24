@@ -10,7 +10,6 @@ CREATE TABLE Customer(
     UserName VARCHAR(20) NOT NULL,
     UserPass VARCHAR(20) NOT NULL,
     
-	UNIQUE(CustomerID),
 	UNIQUE(Email),
 	UNIQUE(UserName),
 
@@ -22,9 +21,9 @@ CREATE TABLE CreditCard (
 	Expiry DATE	NOT NULL,
     CustomerID INT NOT NULL,
 
-	UNIQUE(CreditCardNumber),
     PRIMARY KEY (CreditCardNumber),
     FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE ProductType(
@@ -32,7 +31,6 @@ CREATE TABLE ProductType(
     ProductTypeDesc VARCHAR(500),
     ParentID INT,
     
-	UNIQUE(ProductTypeID),
     PRIMARY KEY (ProductTypeID),
     FOREIGN KEY (ParentID) REFERENCES ProductType(ProductTypeID)
 );
@@ -46,9 +44,9 @@ CREATE TABLE Product (
     Colour VARCHAR(20),
     Size VARCHAR(20),
 
-	UNIQUE(ProductID),
     PRIMARY KEY (ProductID),
     FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE Photo (
@@ -57,7 +55,6 @@ CREATE TABLE Photo (
     ProductID INT NOT NULL
     
 
-  UNIQUE (PhotoID),
     PRIMARY KEY (PhotoID, Photo),
 
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
@@ -68,7 +65,6 @@ CREATE TABLE Shop (
     ShopID INT NOT NULL IDENTITY(1,1),
     ShopName VARCHAR(20) NOT NULL,
 
-	UNIQUE (ShopID),
     PRIMARY KEY (ShopID)
 );
 
@@ -87,7 +83,6 @@ CREATE TABLE Invoice (
     InvoiceDate DATE NOT NULL,
     InvoiceStatus VARCHAR(20) NOT NULL,
 
-    UNIQUE (InvoiceNumber),
     PRIMARY KEY (InvoiceNumber)
 );
 
@@ -96,7 +91,6 @@ CREATE TABLE Payment (
     PaymentDate DATE NOT NULL,
     Amount DECIMAL(8,2) NOT NULL,
 
-	UNIQUE (PaymentID),
     PRIMARY KEY (PaymentID)
 );
 
@@ -104,12 +98,13 @@ CREATE TABLE Orders (
     OrderID INT NOT NULL IDENTITY(1,1),
     OrderDate DATE NOT NULL,
     OrderStatus VARCHAR(20) NOT NULL,
-    CreditCardNumber VARCHAR(20) NOT NULL,
+    CustomerID INT NOT NULL,
     InvoiceNumber INT NOT NULL,
 
     PRIMARY KEY (OrderID),
-    FOREIGN KEY (CreditCardNumber) REFERENCES CreditCard(CreditCardNumber),
+    FOREIGN KEY (Customer) REFERENCES Customer(CustomerID),
     FOREIGN KEY (InvoiceNumber) REFERENCES Invoice(InvoiceNumber)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE Shipment (
@@ -117,7 +112,6 @@ CREATE TABLE Shipment (
     TrackingNo INT,
     ShipmentDate DATE,
 	
-	UNIQUE (ShipmentID),
     PRIMARY KEY (ShipmentID)
 );
 
@@ -130,7 +124,6 @@ CREATE TABLE OrderItem (
     UnitPrice DECIMAL(8,2) NOT NULL,
     ItemStatus VARCHAR(20) NOT NULL,
 
-	UNIQUE (SequenceID),
     PRIMARY KEY (SequenceID),
 	FOREIGN KEY (OrderID) REFERENCES Orders(OrderID), 
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID) 
