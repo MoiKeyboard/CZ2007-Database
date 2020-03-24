@@ -23,7 +23,6 @@ CREATE TABLE CreditCard (
 
     PRIMARY KEY (CreditCardNumber),
     FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
-    ON DELETE CASCADE
 );
 
 CREATE TABLE ProductType(
@@ -46,13 +45,13 @@ CREATE TABLE Product (
 
     PRIMARY KEY (ProductID),
     FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID)
-    ON DELETE CASCADE
 );
 
 CREATE TABLE Photo (
     PhotoID INT NOT NULL IDENTITY(1,1),
     Photo VARCHAR(20) NOT NULL,
     ProductID INT NOT NULL
+    
     PRIMARY KEY (PhotoID, Photo),
 
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
@@ -102,7 +101,6 @@ CREATE TABLE Orders (
     PRIMARY KEY (OrderID),
     FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
     FOREIGN KEY (InvoiceNumber) REFERENCES Invoice(InvoiceNumber)
-    ON DELETE CASCADE
 );
 
 CREATE TABLE Shipment (
