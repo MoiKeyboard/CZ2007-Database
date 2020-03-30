@@ -87,8 +87,12 @@ CREATE TABLE Payment (
     PaymentID INT NOT NULL IDENTITY(1,1),
     PaymentDate DATE NOT NULL,
     Amount DECIMAL(8,2) NOT NULL,
+	InvoiceNumber INT NOT NULL,
+	CreditCardNumber VARCHAR(20) NOT NULL,
 
-    PRIMARY KEY (PaymentID)
+    PRIMARY KEY (PaymentID),
+	FOREIGN KEY (InvoiceNumber) REFERENCES Invoice(InvoiceNumber),
+	FOREIGN KEY (CreditCardNumber) REFERENCES CreditCard(CreditCardNumber)
 );
 
 CREATE TABLE Orders (
