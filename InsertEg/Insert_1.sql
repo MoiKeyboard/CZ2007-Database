@@ -81,7 +81,7 @@ INSERT INTO dsaig6.dbo.Orders(
 	OrderDate,OrderStatus,InvoiceNumber,CustomerID)
 VALUES
 	('20200215','shipped',1,2),
-	('20200331','shipped',2,4)
+	('20200331','partially shipped',2,4)
 
 INSERT INTO dsaig6.dbo.Payment(
 	PaymentDate,Amount,InvoiceNumber,CreditCardNumber)
@@ -104,12 +104,12 @@ VALUES
 INSERT INTO dsaig6.dbo.OrderItem(
 	OrderID,ProductID,ShipmentID,Quantity,UnitPrice,ItemStatus)
 VALUES
-	(1,1,1,1,13.3,'In stock'),
-	(1,2,2,2,30.7,'In stock'),
-	(2,6,3,4,13.3,'In stock'),
-	(2,7,3,2,30.7,'In stock'),
-	(2,1,4,1,5.2,'3 In Stock'),
-	(2,2,5,1,16.5,'In Stock')
+	(1,1,1,1,13.3,'shipped'),
+	(1,2,2,2,30.7,'shipped'),
+	(2,6,3,4,13.3,'shipped'),
+	(2,7,3,2,30.7,'shipped'),
+	(2,1,4,1,5.2,'processing'),
+	(2,2,5,1,16.5,'shipped')
 
 
 Select *from dbo.Customer

@@ -1,10 +1,12 @@
+USE dsaig6;
+GO
 SELECT p.ProductID FROM Product p 
 INNER JOIN OrderItem oi ON p.ProductID  = oi.ProductID 
 INNER JOIN Orders o ON o.OrderID  = oi.OrderID 
 INNER JOIN Customer c ON c.CustomerID  = o.CustomerID 
 INNER JOIN Invoice i ON i.InvoiceNumber  = o.InvoiceNumber 
 WHERE oi.ItemStatus  <> 'shipped' AND i.InvoiceStatus = 'paid'
-AND o.CustomerID  = (SELECT CustomerID FROM Customer WHERE FullName  = 'Benedict')
+AND o.CustomerID  = (SELECT CustomerID FROM Customer WHERE Email  = 'benedict85@hotmail.com')
 
 SELECT TOP 3 (oi.ProductID) , SUM(oi.Quantity) AS TotalQuantity FROM ProductType pt
 INNER JOIN Product p ON p.ProductTypeID  = pt.ProductTypeID 
@@ -31,11 +33,12 @@ ORDER BY NEWID()
 /*Customers that have one item shipped and paid for from each restricted shop*/
 SELECT c.FullName FROM Customer c
 INNER JOIN Orders o ON o.CustomerID  = c.CustomerID 
+INNER JOIN CreditCard cc ON cc.CustomerID  = c.CustomerID 
 INNER JOIN OrderItem oi ON oi.OrderID  = o.OrderID 
 INNER JOIN Invoice i ON i.InvoiceNumber  = o.InvoiceNumber 
 INNER JOIN Product p ON p.ProductID  = oi.ProductID 
 INNER JOIN RestrictedShop rs ON rs.ProductTypeID  = p.ProductTypeID 
-WHERE oi.ItemStatus  <> 'shipped' AND i.InvoiceStatus = 'paid'
+WHERE i.InvoiceStatus = 'paid' AND year(Expiry)='2022'
 GROUP BY  c.FullName
 HAVING count(distinct ShopID)= 
     (SELECT count(*)
