@@ -70,34 +70,47 @@ VALUES
 	('Cetaphilbabylot2.png',2),
 	('TFMazerMicro30.png',6),
 	('TFMazerMicro100.png',6)
+
 INSERT INTO dsaig6.dbo.Invoice(
 	InvoiceDate,InvoiceStatus)
 VALUES
+	('20200215','paid'),
 	('20200331','paid')
 
 INSERT INTO dsaig6.dbo.Orders(
 	OrderDate,OrderStatus,InvoiceNumber,CustomerID)
 VALUES
-	('20200331','shipped',1,4)
+	('20200215','shipped',1,2),
+	('20200331','shipped',2,4)
 
 INSERT INTO dsaig6.dbo.Payment(
 	PaymentDate,Amount,InvoiceNumber,CreditCardNumber)
 VALUES
-	('20200331',53.2,1,'5723534664123452'),
-	('20200331',66.6,1,'5723534664123452')
+	('20200215',66.6,1,'5775324333458435'),
+	('20200331',53.2,2,'5723534664123452'),
+	('20200331',66.6,2,'5723534664123452'),
+	('20200331',16.5,2,'5723534664123452')
 
 INSERT INTO dsaig6.dbo.Shipment(
 	TrackingNo,ShipmentDate)
 VALUES
+	(201,'20200225'),
+	(205,'20200229'),
 	(225,'20200331'),
-	(231,'20200331')
+	(231,'20200331'),
+	(234,'20200331')
+
 
 INSERT INTO dsaig6.dbo.OrderItem(
 	OrderID,ProductID,ShipmentID,Quantity,UnitPrice,ItemStatus)
 VALUES
-	(1,6,1,4,13.3,'In stock'),
-	(1,5,1,2,30.7,'In stock'),
-	(1,1,2,1,5.2,'3 In Stock')
+	(1,1,1,1,13.3,'In stock'),
+	(1,2,2,2,30.7,'In stock'),
+	(2,6,3,4,13.3,'In stock'),
+	(2,7,3,2,30.7,'In stock'),
+	(2,1,4,1,5.2,'3 In Stock'),
+	(2,2,5,1,16.5,'In Stock')
+
 
 Select *from dbo.Customer
 Select *from dbo.CreditCard
