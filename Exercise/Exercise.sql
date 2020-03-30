@@ -2,15 +2,15 @@ SELECT p.ProductID FROM Product p
 INNER JOIN OrderItem oi ON p.ProductID  = oi.ProductID 
 INNER JOIN Orders o ON o.OrderID  = oi.OrderID 
 INNER JOIN Customer c ON c.CustomerID  = o.CustomerID 
-INNER JOIN Invoice i ON i.InvoiceID  = o.InvoiceID 
+INNER JOIN Invoice i ON i.InvoiceNumber  = o.InvoiceNumber 
 WHERE oi.ItemStatus  <> 'shipped' AND i.InvoiceStatus = 'paid'
-AND o.CustomerID  = (SELECT CustomerID FROM Customer WHERE FullName  = 'Ben')
+AND o.CustomerID  = (SELECT CustomerID FROM Customer WHERE FullName  = 'Benedict')
 
 SELECT TOP 3 (oi.ProductID) , SUM(oi.Quantity) AS TotalQuantity FROM ProductType pt
 INNER JOIN Product p ON p.ProductTypeID  = pt.ProductTypeID 
 INNER JOIN OrderItem oi ON oi.ProductID = p.ProductID 
 INNER JOIN Orders o ON o.OrderID  = oi.OrderID 
-INNER JOIN Invoice i ON i.InvoiceID = o.InvoiceID 
+INNER JOIN Invoice i ON i.InvoiceNumber = o.InvoiceNumber 
 WHERE i.InvoiceStatus = 'paid'
 GROUP BY oi.ProductID
 ORDER BY TotalQuantity DESC
