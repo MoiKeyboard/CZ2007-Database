@@ -28,14 +28,15 @@ GROUP BY ProductID1, ProductID2) AS d2
 SELECT TOP 3 Email FROM Customer 
 ORDER BY NEWID()
 
-/*Customers that bought at least one item from each restricted shop*/
+/*Customers that have one item shipped and paid for from each restricted shop*/
 SELECT c.FullName FROM Customer c
 INNER JOIN Orders o ON o.CustomerID  = c.CustomerID 
 INNER JOIN OrderItem oi ON oi.OrderID  = o.OrderID 
 INNER JOIN Invoice i ON i.InvoiceNumber  = o.InvoiceNumber 
 INNER JOIN Product p ON p.ProductID  = oi.ProductID 
+INNER JOIN RestrictedShop rs ON rs.ProductTypeID  = p.ProductTypeID 
 WHERE oi.ItemStatus  <> 'shipped' AND i.InvoiceStatus = 'paid'
 GROUP BY  c.FullName
-HAVING count(distinct ProductTypeID)= 
+HAVING count(distinct ShopID)= 
     (SELECT count(*)
     FROM RestrictedShop);
