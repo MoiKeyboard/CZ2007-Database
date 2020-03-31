@@ -36,16 +36,16 @@ VALUES
 	('Mazer Affliated Partner',3)
 
 INSERT INTO dsaig6.dbo.Product(
-	ProductTypeID, ProductName, Price, ProductDesc, Colour, Size
+	ProductTypeID, ProductName, Price, ProductDesc, Colour, Size, ShopID
 	)
 VALUES
-	(2, '3 in 1 Milo',5.2,'Enjoy 3 in 1 Milo in a brand new packaging!', NULL, '500g'),
-	(1, 'Baby lotion',16.5,'Unscented baby lotion for the skin', NULL, '1 litre'),
-	(3, 'USB Type C cable',30.7,'Charge fast with this 5A type c cable', 'Blue', '100cm'),
-	(3, 'USB Type C cable',30.7,'Charge fast with this 5A type c cable', 'Green', '100cm'),
-	(3, 'USB Type C cable',30.7,'Charge fast with this 5A type c cable', 'Black', '100cm'),
-	(4, 'Micro USB cable',13.3,'Brand new nylon braided cable for enhanced usage', 'Black', '30cm'),
-	(4, 'Micro USB cable',13.3,'Brand new nylon braided cable for enhanced usage', 'Black', '100cm')
+	(2, '3 in 1 Milo',5.2,'Enjoy 3 in 1 Milo in a brand new packaging!', NULL, '500g',3),
+	(1, 'Baby lotion',16.5,'Unscented baby lotion for the skin', NULL, '1 litre',2),
+	(3, 'USB Type C cable',30.7,'Charge fast with this 5A type c cable', 'Blue', '100cm',1),
+	(3, 'USB Type C cable',30.7,'Charge fast with this 5A type c cable', 'Green', '100cm',1),
+	(3, 'USB Type C cable',30.7,'Charge fast with this 5A type c cable', 'Black', '100cm',1),
+	(4, 'Micro USB cable',13.3,'Brand new nylon braided cable for enhanced usage', 'Black', '30cm',1),
+	(4, 'Micro USB cable',13.3,'Brand new nylon braided cable for enhanced usage', 'Black', '100cm',1)
 
 INSERT INTO dsaig6.dbo.RestrictedShop(
 	ShopID, ProductTypeID
@@ -105,7 +105,7 @@ INSERT INTO dsaig6.dbo.OrderItem(
 	OrderID,ProductID,ShipmentID,Quantity,UnitPrice,ItemStatus)
 VALUES
 	(1,1,1,1,13.3,'shipped'),
-	(1,2,2,2,30.7,'shipped'),
+	(1,3,2,2,30.7,'shipped'),
 	(2,6,3,4,13.3,'shipped'),
 	(2,7,3,2,30.7,'shipped'),
 	(2,1,4,1,5.2,'processing'),

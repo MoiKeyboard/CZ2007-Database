@@ -30,16 +30,25 @@ GROUP BY ProductID1, ProductID2) AS d2
 SELECT TOP 3 Email FROM Customer 
 ORDER BY NEWID()
 
-/*Customers that have one item shipped and paid for from each restricted shop*/
+/*Customers that have one paid for from each restricted shop whose credit card expiries on year 2022*/
 SELECT c.FullName FROM Customer c
-INNER JOIN Orders o ON o.CustomerID  = c.CustomerID 
-INNER JOIN CreditCard cc ON cc.CustomerID  = c.CustomerID 
-INNER JOIN OrderItem oi ON oi.OrderID  = o.OrderID 
-INNER JOIN Invoice i ON i.InvoiceNumber  = o.InvoiceNumber 
-INNER JOIN Product p ON p.ProductID  = oi.ProductID 
-INNER JOIN RestrictedShop rs ON rs.ProductTypeID  = p.ProductTypeID 
+JOIN Orders o ON o.CustomerID  = c.CustomerID 
+JOIN CreditCard cc ON cc.CustomerID  = c.CustomerID 
+JOIN OrderItem oi ON oi.OrderID  = o.OrderID 
+JOIN Invoice i ON i.InvoiceNumber  = o.InvoiceNumber 
+JOIN Product p ON p.ProductID  = oi.ProductID 
+JOIN RestrictedShop rs ON rs.ProductTypeID  = p.ProductTypeID 
 WHERE i.InvoiceStatus = 'paid' AND year(Expiry)='2022'
 GROUP BY  c.FullName
-HAVING count(distinct ShopID)= 
+HAVING count(distinct rs.ShopID)= 
     (SELECT count(*)
     FROM RestrictedShop);
+
+/*Gross sales for the products each shop sells in the month of febuary*/
+SELECT p.ShopID, SUM(oi.UnitPrice * oi.Quantity) AS totalPrice 
+    FROM OrderItem AS oi
+    JOIN Product AS p ON oi.ProductID = p.ProductID
+	JOIN Orders AS o ON o.OrderID = oi.OrderID
+WHERE month(OrderDate)='2'
+GROUP BY p.ShopID
+ORDER BY totalPrice DESC
