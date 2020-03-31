@@ -1,3 +1,5 @@
+USE dsaig6;
+GO
 INSERT INTO dsaig6.dbo.Customer (
     FullName, FullAddress, Email,PhoneNumber,UserName,UserPass
 )
@@ -24,7 +26,9 @@ INSERT INTO dsaig6.dbo.Shop(
 VALUES
     ('Tech Fit'),
 	('Cetaphil'),
-	('Nescafe')
+	('Nescafe'),
+	('Creative')
+
 
 INSERT INTO dsaig6.dbo.ProductType(
 	ProductTypeDesc, ParentID
@@ -33,7 +37,8 @@ VALUES
 	('Affliated store of Cetaphil',NULL),
 	('Official online store for Nescafe',NULL),
 	('Mazer Official Store',NULL),
-	('Mazer Affliated Partner',3)
+	('Mazer Affliated Partner',3),
+	('Creative Technology',NULL)
 
 INSERT INTO dsaig6.dbo.Product(
 	ProductTypeID, ProductName, Price, ProductDesc, Colour, Size, ShopID
@@ -45,7 +50,8 @@ VALUES
 	(3, 'USB Type C cable',30.7,'Charge fast with this 5A type c cable', 'Green', '100cm',1),
 	(3, 'USB Type C cable',30.7,'Charge fast with this 5A type c cable', 'Black', '100cm',1),
 	(4, 'Micro USB cable',13.3,'Brand new nylon braided cable for enhanced usage', 'Black', '30cm',1),
-	(4, 'Micro USB cable',13.3,'Brand new nylon braided cable for enhanced usage', 'Black', '100cm',1)
+	(4, 'Micro USB cable',13.3,'Brand new nylon braided cable for enhanced usage', 'Black', '100cm',1),
+	(5, 'Bluetooth speaker',50.2,'Smallest form factor bluetooth speaker', 'Black', NULL,4)
 
 INSERT INTO dsaig6.dbo.RestrictedShop(
 	ShopID, ProductTypeID
@@ -69,19 +75,25 @@ VALUES
 	('Cetaphilbabylot1.png',2),
 	('Cetaphilbabylot2.png',2),
 	('TFMazerMicro30.png',6),
-	('TFMazerMicro100.png',6)
+	('TFMazerMicro100.png',7),
+	('CreativeSpeaker.png',8),
+
 
 INSERT INTO dsaig6.dbo.Invoice(
 	InvoiceDate,InvoiceStatus)
 VALUES
 	('20200215','paid'),
-	('20200331','paid')
+	('20200331','paid'),
+	('20200405','issued')
+
 
 INSERT INTO dsaig6.dbo.Orders(
 	OrderDate,OrderStatus,InvoiceNumber,CustomerID)
 VALUES
 	('20200215','shipped',1,2),
-	('20200331','partially shipped',2,4)
+	('20200331','processing',2,4),
+	('20200405','invoice issued',2,1)
+
 
 INSERT INTO dsaig6.dbo.Payment(
 	PaymentDate,Amount,InvoiceNumber,CreditCardNumber)
@@ -107,9 +119,12 @@ VALUES
 	(1,1,1,1,13.3,'shipped'),
 	(1,3,2,2,30.7,'shipped'),
 	(2,6,3,4,13.3,'shipped'),
-	(2,7,3,2,30.7,'shipped'),
-	(2,1,4,1,5.2,'processing'),
-	(2,2,5,1,16.5,'shipped')
+	(2,7,3,3,30.7,'shipped'),
+	(2,1,NULL,1,5.2,'processing'),
+	(2,2,5,5,16.5,'shipped'),
+	(3,8,NULL,1,50.2,'out of stock')
+
+
 
 
 Select *from dbo.Customer

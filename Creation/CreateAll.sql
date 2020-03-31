@@ -122,7 +122,7 @@ CREATE TABLE OrderItem (
     OrderID INT NOT NULL,
     SequenceID INT NOT NULL IDENTITY(1,1),
     ProductID INT NOT NULL,
-    ShipmentID INT NOT NULL,
+    ShipmentID INT,
     Quantity INT NOT NULL,
     UnitPrice DECIMAL(8,2) NOT NULL,
     ItemStatus VARCHAR(20) NOT NULL,
