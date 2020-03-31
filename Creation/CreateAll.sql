@@ -33,7 +33,12 @@ CREATE TABLE ProductType(
     PRIMARY KEY (ProductTypeID),
     FOREIGN KEY (ParentID) REFERENCES ProductType(ProductTypeID)
 );
+CREATE TABLE Shop (
+    ShopID INT NOT NULL IDENTITY(1,1),
+    ShopName VARCHAR(20) NOT NULL,
 
+    PRIMARY KEY (ShopID)
+);
 CREATE TABLE Product (
     ProductID INT NOT NULL IDENTITY(1,1),
     ProductTypeID INT NOT NULL,
@@ -42,9 +47,12 @@ CREATE TABLE Product (
     ProductDesc VARCHAR(500),
     Colour VARCHAR(20),
     Size VARCHAR(20),
+	ShopID INT NOT NULL,
 
     PRIMARY KEY (ProductID),
-    FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID)
+    FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID),
+	FOREIGN KEY (ShopID) REFERENCES Shop(ShopID)
+
 );
 
 CREATE TABLE Photo (
@@ -58,12 +66,7 @@ CREATE TABLE Photo (
     ON DELETE CASCADE ON UPDATE CASCADE,
 );
 
-CREATE TABLE Shop (
-    ShopID INT NOT NULL IDENTITY(1,1),
-    ShopName VARCHAR(20) NOT NULL,
 
-    PRIMARY KEY (ShopID)
-);
 
 CREATE TABLE RestrictedShop (
     ShopID INT NOT NULL,
