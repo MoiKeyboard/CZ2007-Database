@@ -45,6 +45,7 @@ FROM
             INNER JOIN OrderItem oi2 ON oi2.OrderID  = oi.OrderID
         WHERE oi2.ProductID <> oi.ProductID AND oi2.OrderID  = oi.OrderID) AS d
     GROUP BY ProductID1, ProductID2) AS d2
+;
 
 /*Get 3 random customers and return their email addresses.*/
 SELECT TOP 3
