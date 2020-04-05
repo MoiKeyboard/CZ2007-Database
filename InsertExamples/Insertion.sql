@@ -11,7 +11,6 @@ VALUES
 	('Tom', 'Blk 112 Singapore', 'tom22@gmail.com', '95748396', 'Tom212', 's996728f'),
 	('Benedict', 'Blk 556 Serangoon Drive', 'benedict85@hotmail.com', '96533542', 'ben85', 's8522312a');
 
-
 INSERT INTO dsaig6.dbo.CreditCard
 	(
 	CreditCardNumber,Expiry,CustomerID
@@ -32,7 +31,6 @@ VALUES
 	('Cetaphil'),
 	('Nescafe'),
 	('Creative');
-
 
 INSERT INTO dsaig6.dbo.ProductType
 	(
@@ -87,7 +85,6 @@ VALUES
 	('TFMazerMicro100.png', 7),
 	('CreativeSpeaker.png', 8);
 
-
 INSERT INTO dsaig6.dbo.Invoice
 	(
 	InvoiceDate,InvoiceStatus)
@@ -96,7 +93,6 @@ VALUES
 	('20200331', 'paid'),
 	('20200405', 'issued');
 
-
 INSERT INTO dsaig6.dbo.Orders
 	(
 	OrderDate,OrderStatus,InvoiceNumber,CustomerID)
@@ -104,7 +100,6 @@ VALUES
 	('20200215', 'shipped', 1, 2),
 	('20200331', 'processing', 2, 4),
 	('20200405', 'invoice issued', 2, 1);
-
 
 INSERT INTO dsaig6.dbo.Payment
 	(
@@ -125,7 +120,6 @@ VALUES
 	(231, '20200331'),
 	(234, '20200331');
 
-
 INSERT INTO dsaig6.dbo.OrderItem
 	(
 	OrderID,ProductID,ShipmentID,Quantity,UnitPrice,ItemStatus)
@@ -137,9 +131,6 @@ VALUES
 	(2, 1, NULL, 1, 5.2, 'processing'),
 	(2, 2, 5, 5, 16.5, 'shipped'),
 	(3, 8, NULL, 1, 50.2, 'out of stock');
-
-
-
 
 Select *
 from dbo.Customer

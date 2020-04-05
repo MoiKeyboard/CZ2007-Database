@@ -24,3 +24,5 @@ For quick access to database through VSCode
         }
     ]
 ```
+# Database Creation
+[Link to creation .sql script](Creation/CreatAll.sql)
