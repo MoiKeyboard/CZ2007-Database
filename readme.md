@@ -117,8 +117,7 @@ FROM Customer c
     JOIN RestrictedShop rs ON rs.ProductTypeID  = p.ProductTypeID
 WHERE i.InvoiceStatus = 'paid'
 GROUP BY  c.FullName
-HAVING count(distinct rs.ShopID)= 
-    (SELECT count(*)
+HAVING count(distinct rs.ShopID) =  (SELECT count(*)
 FROM RestrictedShop)
 ;
 ```
