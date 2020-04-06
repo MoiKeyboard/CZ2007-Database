@@ -25,6 +25,7 @@ CREATE TABLE CreditCard
 
     PRIMARY KEY (CreditCardNumber),
     FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE ProductType
@@ -35,6 +36,7 @@ CREATE TABLE ProductType
 
     PRIMARY KEY (ProductTypeID),
     FOREIGN KEY (ParentID) REFERENCES ProductType(ProductTypeID)
+    ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE Shop
@@ -44,6 +46,7 @@ CREATE TABLE Shop
 
     PRIMARY KEY (ShopID)
 );
+
 CREATE TABLE Product
 (
     ProductID INT NOT NULL IDENTITY(1,1),
@@ -56,9 +59,10 @@ CREATE TABLE Product
     ShopID INT NOT NULL,
 
     PRIMARY KEY (ProductID),
-    FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID),
+    FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (ShopID) REFERENCES Shop(ShopID)
-
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Photo
@@ -83,13 +87,13 @@ CREATE TABLE RestrictedShop
     PRIMARY KEY (ShopID, ProductTypeID),
     FOREIGN KEY (ShopID) REFERENCES Shop(ShopID),
     FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ProductTypeID)
-
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Invoice
 (
     InvoiceNumber INT NOT NULL IDENTITY(1,1),
-    InvoiceDate DATE NOT NULL,
+    InvoiceDate DATE NOT NULL DEFAULT GETDATE(),
     InvoiceStatus VARCHAR(20) NOT NULL,
 
     PRIMARY KEY (InvoiceNumber)
@@ -98,27 +102,31 @@ CREATE TABLE Invoice
 CREATE TABLE Payment
 (
     PaymentID INT NOT NULL IDENTITY(1,1),
-    PaymentDate DATE NOT NULL,
+    PaymentDate DATE NOT NULL DEFAULT GETDATE(),
     Amount DECIMAL(8,2) NOT NULL,
     InvoiceNumber INT NOT NULL,
     CreditCardNumber VARCHAR(20) NOT NULL,
 
     PRIMARY KEY (PaymentID),
-    FOREIGN KEY (InvoiceNumber) REFERENCES Invoice(InvoiceNumber),
+    FOREIGN KEY (InvoiceNumber) REFERENCES Invoice(InvoiceNumber)
+    ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (CreditCardNumber) REFERENCES CreditCard(CreditCardNumber)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Orders
 (
     OrderID INT NOT NULL IDENTITY(1,1),
-    OrderDate DATE NOT NULL,
+    OrderDate DATE NOT NULL DEFAULT GETDATE(),
     OrderStatus VARCHAR(20) NOT NULL,
     CustomerID INT NOT NULL,
     InvoiceNumber INT NOT NULL,
 
     PRIMARY KEY (OrderID),
-    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (InvoiceNumber) REFERENCES Invoice(InvoiceNumber)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Shipment
