@@ -1,14 +1,22 @@
 # CZ2007 Database Project
-The repository contains scripts related to the final lab for CZ2007 through [MSSQL](https://github.com/microsoft/sql-server-samples).
+The repository contains scripts related to the final lab for CZ2007 through Microsoft SQL.
 
 ## Prerequiste
-NTUwireless VPN Access
+[Microsoft SQL](https://www.microsoft.com/en-sg/sql-server/sql-server-downloads)
 
-## Optional (VScode)
-For quick access to database through VSCode
+## Importing Database 
+Through any Microsoft SQL server
+1. Right click Databases
+2. Select 'Import Data-tier Application'
+3. Under 'Import from local disk', select [dsaig6.bacpac file](Backup/dsaig6.bacpac)
+4. Enter database name and wait for import
+
+## (Optional) Accessing SWLAB2 SQL server (VScode)
+For quick access to database through VSCode.
+0. (REQUIRED) NTUwireless VPN access
 1. Download the following
-- [Visual Studio Code](https://code.visualstudio.com/Download)
-- [SQL Server (mssql) extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)
+   1. [Visual Studio Code](https://code.visualstudio.com/Download)
+   2. [SQL Server (mssql) extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)
 2. Add following snippet to VSCode **settings.json** for quick connection [(for more info)](https://docs.microsoft.com/en-us/sql/visual-studio-code/sql-server-develop-use-vscode?view=sql-server-ver15)
 ```
 "mssql.connections": [
@@ -27,16 +35,16 @@ For quick access to database through VSCode
 
 # Database Scripts
 The following .sql scripts used in the making of the overall database.
-[Link to creation scripts](Creation/CreateAll.sql)
-[Link to example scripts](Insertion/InsertExamples.sql)
-[Link to selection scripts](Selection/SelectAll.sql)
-[Link to deletion scripts](Deletion/DeleteAll.sql)
-## Required Queries
+- [Link to creation scripts](Creation/CreateAll.sql)
+- [Link to example scripts](Insertion/InsertExamples.sql)
+- [Link to selection scripts](Selection/SelectAll.sql)
+- [Link to deletion scripts](Deletion/DeleteAll.sql)
+- [Link to exercise queries scripts](Exercise/Exercise.sql)
+## Required Exercise Queries
 As required for the submission, the following scripts are in accordance with Appendix B.
 ### Appendix B Query 1
 Given a customer by an email address, returns the product ids that have been ordered and paid by this customer but not yet shipped. 
 ```
-/*Given a customer by an email address, returns the product ids that have been ordered and paid by this customer but not yet shipped.*/
 SELECT p.ProductID
 FROM Product p
     INNER JOIN OrderItem oi ON p.ProductID  = oi.ProductID
@@ -98,7 +106,7 @@ ORDER BY NEWID()
 ;
 ```
 ### Personalised Query 1
-Find customers that have one paid for at least an item from each restricted shop*/
+Find customers that have one paid for at least an item from each restricted shop.
 ```
 SELECT c.FullName
 FROM Customer c
@@ -116,7 +124,7 @@ FROM RestrictedShop)
 ;
 ```
 ### Personalised Query 2
-Obtain gross sales for the shipped products of shops in the month of febuary
+Obtain gross sales for the shipped products of shops in the month of Febuary.
 ```
 SELECT p.ShopID, SUM(oi.UnitPrice * oi.Quantity) AS GrossSale
 FROM OrderItem AS oi
@@ -127,3 +135,30 @@ GROUP BY p.ShopID
 ORDER BY GrossSale DESC
 ;
 ```
+# Authors
+- [U1822304C Qwek Zhi Hui](https://github.com/MoiKeyboard)
+- [U1822199A Mok Wei Min](https://github.com/WeiMin-M)
+- [U1822815K Ng Jin Han Benedict](https://github.com/ben132473u)
+- [U1820136A Png Jun Sheng](https://github.com/canopii)
+# Contributions
+## Lab 1
+| Name      | Individual Contribution           | Percentage of Contribution |
+|-----------|-----------------------------------|----------------------------|
+| Zhi Hui   | Discussion, Conversion to digital | 25                         |
+| Wei min   | Discussion                        | 25                         |
+| Benedict  | Discussion                        | 25                         |
+| Jun Sheng | Discussion                        | 25                         |
+## Lab 3
+| Name      | Individual Contribution           | Percentage of Contribution |
+|-----------|-----------------------------------|----------------------------|
+| Zhi Hui   | Discussion                        | 25                         |
+| Wei min   | Initial edits, Discussion         | 25                         |
+| Benedict  | Discussion, Conversion to digital | 25                         |
+| Jun Sheng | Discussion, Conversion to digital | 25                         |
+## Lab 5
+| Name      | Individual Contribution                   | Percentage of Contribution |
+|-----------|-------------------------------------------|----------------------------|
+| Zhi Hui   | DB Setup, Intial edits, Discussion        | 25                         |
+| Wei min   | Intial edits, Query formation, Discussion | 25                         |
+| Benedict  | Query Formation, Discussion               | 25                         |
+| Jun Sheng | Discussion                                | 25                         |
