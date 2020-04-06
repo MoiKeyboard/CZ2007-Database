@@ -8,7 +8,7 @@ The repository contains scripts related to the final lab for CZ2007 through Micr
 Through any Microsoft SQL server
 1. Right click Databases
 2. Select 'Import Data-tier Application'
-3. Under 'Import from local disk', select [dsaig6.bacpac file](Backup/dsaig6.bacpac)
+3. Under 'Import from local disk', select [dsaig6.bacpac file](https://github.com/MoiKeyboard/CZ2007-Database/blob/master/Backup/dsaig6.bacpac)
 4. Enter database name and wait for import
 
 ## (Optional) Accessing SWLAB2 SQL server (VScode)
@@ -25,8 +25,7 @@ For quick access to database through VSCode.
             "database": "dsaig6",
             "authenticationType": "SqlLogin",
             "user": "dsaig6",
-            "password": "",
-            "emptyPasswordInput": false,
+            "password": "password",
             "savePassword": true,
             "profileName": "CZ2007_Database"
         }
@@ -35,11 +34,11 @@ For quick access to database through VSCode.
 
 # Database Scripts
 The following .sql scripts used in the making of the overall database.
-- [Link to creation scripts](Creation/CreateAll.sql)
-- [Link to example scripts](Insertion/InsertExamples.sql)
-- [Link to selection scripts](Selection/SelectAll.sql)
-- [Link to deletion scripts](Deletion/DeleteAll.sql)
-- [Link to exercise queries scripts](Exercise/Exercise.sql)
+- [Link to creation scripts](https://github.com/MoiKeyboard/CZ2007-Database/blob/master/1_CreateAll.sql)
+- [Link to example scripts](https://github.com/MoiKeyboard/CZ2007-Database/blob/master/2_Insertion.sql)
+- [Link to selection scripts](https://github.com/MoiKeyboard/CZ2007-Database/blob/master/3_SelectAll.sql)
+- [Link to exercise queries scripts](https://github.com/MoiKeyboard/CZ2007-Database/blob/master/4_Exercise.sql)
+- [Link to deletion scripts](https://github.com/MoiKeyboard/CZ2007-Database/blob/master/5_DeleteAll.sql)
 ## Required Exercise Queries
 As required for the submission, the following scripts are in accordance with Appendix B.
 ### Appendix B Query 1
@@ -135,27 +134,27 @@ GROUP BY p.ShopID
 ORDER BY GrossSale DESC
 ;
 ```
-# Authors
+## Authors
 - [U1822304C Qwek Zhi Hui](https://github.com/MoiKeyboard)
 - [U1822199A Mok Wei Min](https://github.com/WeiMin-M)
 - [U1822815K Ng Jin Han Benedict](https://github.com/ben132473u)
 - [U1820136A Png Jun Sheng](https://github.com/canopii)
-# Contributions
-## Lab 1
+## Contributions
+### Lab 1
 | Name      | Individual Contribution           | Percentage of Contribution |
 |-----------|-----------------------------------|----------------------------|
 | Zhi Hui   | Discussion, Conversion to digital | 25                         |
 | Wei min   | Discussion                        | 25                         |
 | Benedict  | Discussion                        | 25                         |
 | Jun Sheng | Discussion                        | 25                         |
-## Lab 3
+### Lab 3
 | Name      | Individual Contribution           | Percentage of Contribution |
 |-----------|-----------------------------------|----------------------------|
 | Zhi Hui   | Discussion                        | 25                         |
 | Wei min   | Initial edits, Discussion         | 25                         |
 | Benedict  | Discussion, Conversion to digital | 25                         |
 | Jun Sheng | Discussion, Conversion to digital | 25                         |
-## Lab 5
+### Lab 5
 | Name      | Individual Contribution                   | Percentage of Contribution |
 |-----------|-------------------------------------------|----------------------------|
 | Zhi Hui   | DB Setup, Intial edits, Discussion        | 25                         |
