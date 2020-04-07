@@ -134,9 +134,9 @@ ORDER BY GrossSale DESC
 ;
 ```
 ## Authors
-- [U1822304C Qwek Zhi Hui](https://github.com/MoiKeyboard)![qweksign]
+- [U1822304C Qwek Zhi Hui](https://github.com/MoiKeyboard)
   - <img src="qwek.JPG" width="auto" height="100"/>
-- [U1822199A Mok Wei Min](https://github.com/WeiMin-M)![weimin]
+- [U1822199A Mok Wei Min](https://github.com/WeiMin-M)
   - <img src="WeiMin_Sign.jpg" width="auto" height="100"/>
 - [U1822815K Ng Jin Han Benedict](https://github.com/ben132473u)
   - <img src="Benedict_signature.png" width="auto" height="100"/>
