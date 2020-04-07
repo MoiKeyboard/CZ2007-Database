@@ -13,10 +13,10 @@ Through any Microsoft SQL server
 
 ## (Optional) Accessing SWLAB2 SQL server (VScode)
 For quick access to database through VSCode.
-0. (REQUIRED) NTUwireless VPN access
-1. Download the following
-   1. [Visual Studio Code](https://code.visualstudio.com/Download)
-   2. [SQL Server (mssql) extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)
+1. Ensure the following tools are available
+   1. NTUwireless VPN access
+   2. [Visual Studio Code](https://code.visualstudio.com/Download)
+   3. [SQL Server (mssql) extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)
 2. Add following snippet to VSCode **settings.json** for quick connection [(for more info)](https://docs.microsoft.com/en-us/sql/visual-studio-code/sql-server-develop-use-vscode?view=sql-server-ver15)
 ```
 "mssql.connections": [
