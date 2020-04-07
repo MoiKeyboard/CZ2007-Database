@@ -134,31 +134,33 @@ ORDER BY GrossSale DESC
 ;
 ```
 ## Authors
-- [U1822304C Qwek Zhi Hui](https://github.com/MoiKeyboard)
-- [U1822199A Mok Wei Min](https://github.com/WeiMin-M)
+- [U1822304C Qwek Zhi Hui](https://github.com/MoiKeyboard)![qweksign]
+  - <img src="qwek.JPG" width="auto" height="100"/>
+- [U1822199A Mok Wei Min](https://github.com/WeiMin-M)![weimin]
+  - <img src="WeiMin_Sign.jpg" width="auto" height="100"/>
 - [U1822815K Ng Jin Han Benedict](https://github.com/ben132473u)
+  - <img src="Benedict_signature.png" width="auto" height="100"/>
 - [U1820136A Png Jun Sheng](https://github.com/canopii)
+  - <img src="JunSheng_signature.png" width="auto" height="100"/>
 ## Contributions
 ### Lab 1
 | Name      | Individual Contribution           | Percentage of Contribution |
-|-----------|-----------------------------------|----------------------------|
+| --------- | --------------------------------- | -------------------------- |
 | Zhi Hui   | Discussion, Conversion to digital | 25                         |
 | Wei min   | Discussion                        | 25                         |
 | Benedict  | Discussion                        | 25                         |
 | Jun Sheng | Discussion                        | 25                         |
 ### Lab 3
 | Name      | Individual Contribution           | Percentage of Contribution |
-|-----------|-----------------------------------|----------------------------|
+| --------- | --------------------------------- | -------------------------- |
 | Zhi Hui   | Discussion                        | 25                         |
 | Wei min   | Initial edits, Discussion         | 25                         |
 | Benedict  | Discussion, Conversion to digital | 25                         |
 | Jun Sheng | Discussion, Conversion to digital | 25                         |
 ### Lab 5
 | Name      | Individual Contribution                   | Percentage of Contribution |
-|-----------|-------------------------------------------|----------------------------|
+| --------- | ----------------------------------------- | -------------------------- |
 | Zhi Hui   | DB Setup, Intial edits, Discussion        | 25                         |
 | Wei min   | Intial edits, Query formation, Discussion | 25                         |
 | Benedict  | Query Formation, Discussion               | 25                         |
 | Jun Sheng | Discussion                                | 25                         |
-
-Mok Wei Min: ![Image of Signature](https://raw.githubusercontent.com/MoiKeyboard/CZ2007-Database/master/WeiMin_Sign.jpg)
