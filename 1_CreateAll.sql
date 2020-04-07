@@ -32,11 +32,10 @@ CREATE TABLE ProductType
 (
     ProductTypeID INT NOT NULL IDENTITY(1,1),
     ProductTypeDesc VARCHAR(500),
-    ParentID INT,
+    ParentID INT DEFAULT NULL,
 
     PRIMARY KEY (ProductTypeID),
     FOREIGN KEY (ParentID) REFERENCES ProductType(ProductTypeID)
-    ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE Shop
