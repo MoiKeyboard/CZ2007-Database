@@ -161,4 +161,4 @@ ORDER BY GrossSale DESC
 | Benedict  | Query Formation, Discussion               | 25                         |
 | Jun Sheng | Discussion                                | 25                         |
 
-![Image of Signature](https://raw.githubusercontent.com/MoiKeyboard/CZ2007-Database/master/WeiMin_Sign.PNG)
+Mok Wei Min: ![Image of Signature](https://raw.githubusercontent.com/MoiKeyboard/CZ2007-Database/master/WeiMin_Sign.PNG)
