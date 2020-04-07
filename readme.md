@@ -160,3 +160,5 @@ ORDER BY GrossSale DESC
 | Wei min   | Intial edits, Query formation, Discussion | 25                         |
 | Benedict  | Query Formation, Discussion               | 25                         |
 | Jun Sheng | Discussion                                | 25                         |
+
+![Image of Signature]https://raw.githubusercontent.com/MoiKeyboard/CZ2007-Database/master/WeiMin_Sign.PNG
